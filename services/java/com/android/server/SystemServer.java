@@ -225,6 +225,9 @@ import java.util.concurrent.Future;
 // CustomGlobalActionsService
 import com.android.server.custom.globalactions.CustomGlobalActionsService;
 
+// LineageHardware
+import com.android.server.custom.LineageHardwareService;
+
 /**
  * Entry point to {@code system_server}.
  */
@@ -2432,6 +2435,12 @@ public final class SystemServer implements Dumpable {
             if (!mOnlyCore){
                 t.traceBegin("StartCustomGlobalActionsService");
                 mSystemServiceManager.startService(CustomGlobalActionsService.class);
+                t.traceEnd();
+            
+	    // LineageHardware
+            if (!mOnlyCore){
+                t.traceBegin("StartLineageHardwareService");
+                mSystemServiceManager.startService(LineageHardwareService.class);
                 t.traceEnd();
             }
         }
